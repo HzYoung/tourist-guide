@@ -11,6 +11,7 @@ int graph::getVertexIdByName(string name) {
 		if (v.name == name) return v.id;
 	}
 	cerr << "can't find a vertex named" << name << endl;
+	return 0;
 }
 string graph::getVertexNameById(int vertex_id) {
 	if (vertex_id < 0 || vertex_id >= vertexList.size()) {
@@ -29,6 +30,7 @@ string graph::getDetail(int vertex_id) {
 vector<string> graph::showAll() {
 	vector<string> list;
 	for (auto v : vertexList) list.push_back(v.name);
+	return list;
 }
 
 void graph::addEdge(int from, int to, int len, string direction, RoadType road) {
@@ -38,12 +40,12 @@ void graph::addEdge(int from, int to, int len, string direction, RoadType road) 
 	nextEdge[firstEdge[from]] = edgeList.size() - 1;
 	firstEdge[from] = edgeList.size() - 1;
 }
-//ÈçÌí¼ÓÒ»Ìõ´ÓµÚ5¸ö¾°µãµ½µÚ7¸ö¾°µãµÄÎ÷ÄÏ·½Ïò³¤¶ÈÎª500Ã×µÄÈËĞĞÂ·£¬µ÷ÓÃ
-//addEdge(5, 7, 500, ¡°Î÷ÄÏ¡±, foot_way)
+//å¦‚æ·»åŠ ä¸€æ¡ä»ç¬¬5ä¸ªæ™¯ç‚¹åˆ°ç¬¬7ä¸ªæ™¯ç‚¹çš„è¥¿å—æ–¹å‘é•¿åº¦ä¸º500ç±³çš„äººè¡Œè·¯ï¼Œè°ƒç”¨
+//addEdge(5, 7, 500, â€œè¥¿å—â€, foot_way)
 
 vector<Edge> graph::getPath(int start, int end, RoadType road) {
 	queue <int> Q;
-	vector<int> pre; // ¼ÇÂ¼  ¾­ÓÉÄÄÒ»Ìõ±ßµ½´ïxµã
+	vector<int> pre; // è®°å½•  ç»ç”±å“ªä¸€æ¡è¾¹åˆ°è¾¾xç‚¹
 	int *dis = new int[vertexList.size()];
 	int *vis = new int[vertexList.size()];
 	for (int i = 0; i < vertexList.size(); ++i) dis[i] = INF, vis[i] = 0;
@@ -108,7 +110,10 @@ istream& operator >> (istream &in, graph &g) {
 		in >> t;
 		g.nextEdge.push_back(t);
 	}
+	return in;
 }
+
+
 ostream& operator << (ostream &out, const graph &g) {
 	out << g.vertexList.size() << endl;
 	for (auto v : g.vertexList) {
@@ -135,4 +140,3 @@ ostream& operator << (ostream &out, const graph &g) {
 
 	return out;
 }
-

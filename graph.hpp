@@ -37,24 +37,24 @@ class graph {
 private:
 	vector<Vertex> vertexList;
 	vector<Edge> edgeList;
-	vector<int> firstEdge; //Ä³¸öµãxµÄµÚÒ»Ìõ»¡
-	vector<int> nextEdge; //ÓëÄ³Ìõ±ßxÍ¬Ò»¶¥µãµÄÏÂÒ»Ìõ»¡
+	vector<int> firstEdge; //æŸä¸ªç‚¹xçš„ç¬¬ä¸€æ¡å¼§
+	vector<int> nextEdge; //ä¸æŸæ¡è¾¹xåŒä¸€é¡¶ç‚¹çš„ä¸‹ä¸€æ¡å¼§
 public:
 	graph();
 	/*operation of vertex*/
-	// Ò»¿ªÊ¼Í¼Îª¿Õ£¬ĞèÒªÏÈµ÷ÓÃaddVertexÌí¼ÓĞÂ¾°µã
+	// ä¸€å¼€å§‹å›¾ä¸ºç©ºï¼Œéœ€è¦å…ˆè°ƒç”¨addVertexæ·»åŠ æ–°æ™¯ç‚¹
 	void addVertex(string name, string detail);
-	// ÓÃÉÏÊöºòÑ¡¾°µã×÷Àı×Ó£¬³ÌĞòÒ»¿ªÊ¼Ê±µ÷ÓÃaddVertex(¡°ĞĞÕşÂ¥¡±, ¡°¡­¡±); addVertex(¡°¹«¹²½ÌÑ§Â¥¡±, ¡°¡­¡±);
-	// Ö®ºóĞĞÕşÂ¥¶ÔÓ¦µÄidÎª0£¬¹«¹²½ÌÑ§Â¥¶ÔÓ¦µÄidÎª1£¬idÃ¿´Î×Ô¼Ó1
+	// ç”¨ä¸Šè¿°å€™é€‰æ™¯ç‚¹ä½œä¾‹å­ï¼Œç¨‹åºä¸€å¼€å§‹æ—¶è°ƒç”¨addVertex(â€œè¡Œæ”¿æ¥¼â€, â€œâ€¦â€); addVertex(â€œå…¬å…±æ•™å­¦æ¥¼â€, â€œâ€¦â€);
+	// ä¹‹åè¡Œæ”¿æ¥¼å¯¹åº”çš„idä¸º0ï¼Œå…¬å…±æ•™å­¦æ¥¼å¯¹åº”çš„idä¸º1ï¼Œidæ¯æ¬¡è‡ªåŠ 1
 	int getVertexIdByName(string name);
 	string getVertexNameById(int vertex_id);
 	string getDetail(int vertex_id);
-	vector<string> showAll(); //·µ»ØËùÓĞ¾°µãµÄÃû³ÆÁĞ±í
+	vector<string> showAll(); //è¿”å›æ‰€æœ‰æ™¯ç‚¹çš„åç§°åˆ—è¡¨
 
 	/*operation of edge*/
 	void addEdge(int from, int to, int len, string direction, RoadType road);
-	//ÈçÌí¼ÓÒ»Ìõ´ÓµÚ5¸ö¾°µãµ½µÚ7¸ö¾°µãµÄÎ÷ÄÏ·½Ïò³¤¶ÈÎª500Ã×µÄÈËĞĞÂ·£¬µ÷ÓÃ
-	//addEdge(5, 7, 500, ¡°Î÷ÄÏ¡±, foot_way)
+	//å¦‚æ·»åŠ ä¸€æ¡ä»ç¬¬5ä¸ªæ™¯ç‚¹åˆ°ç¬¬7ä¸ªæ™¯ç‚¹çš„è¥¿å—æ–¹å‘é•¿åº¦ä¸º500ç±³çš„äººè¡Œè·¯ï¼Œè°ƒç”¨
+	//addEdge(5, 7, 500, â€œè¥¿å—â€, foot_way)
 
 	vector<Edge> getPath(int start, int end, RoadType road);
 	friend istream& operator >> (istream &in, graph &g);
